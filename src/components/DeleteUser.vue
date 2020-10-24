@@ -4,8 +4,10 @@ export default {
   methods: {
     delete () {
       axios.delete(process.env.VUE_APP_API_URL_BASE + 'user', { withCredentials: true }).then(res => {
-        this.$router.push({ path: '/' })
+        this.$cookies.remove('token')
         console.log(res)
+        this.$router.push({ name: 'Home' })
+        this.$router.go()
       }).catch(error => {
         console.log(error)
       })
