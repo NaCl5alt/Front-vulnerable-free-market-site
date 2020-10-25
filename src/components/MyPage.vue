@@ -2,7 +2,8 @@
   <div>
     <div>
     <div class="row frame">
-      <img :src="img" class="col" id="icon">
+      <!--img :src="img" class="col" id="icon"-->
+      <img :src="imgUrl" class="col" id="icon">
       <div class="col" id="summary">
         <div class="inline">
           <div id="name">{{ name }}</div>
@@ -69,7 +70,7 @@
            <input v-on:change="onImgChange" accept="image/jpeg,image/png,image/webp" type="file" style="z-index: -1;opacity: 0;margin-left: -70px;margin-top: 50px;width: 0.1px;height: 0.1px;cursor: pointer;"/>
         </div>
           <div style="z-index: 2;">
-            <img v-show="showicon" :src="img" class="col" id="icon" style="position: absolute;">
+            <img v-show="showicon" :src="imgUrl" class="col" id="icon" style="position: absolute;">
             <img v-show="!showicon" :src="eimg" class="col" id="icon" style="position: absolute;">
           </div>
       </div>
@@ -93,6 +94,8 @@ export default {
   name: 'Mypage',
   data () {
     return {
+      url: 'http://192.168.1.3:8080/freemarket/img/user/',
+      imgUrl: '',
       showicon: true,
       showContent: false,
       userid: 'test',
@@ -108,6 +111,14 @@ export default {
     onImgChange (e) {
       const files = e.target.files || e.dataTransfer.files
       this.createImage(files[0])
+      var params = new FormData()
+      params.append('img', files[0])
+      axios.post(process.env.VUE_APP_API_URL_BASE + 'img/user', params, { withCredentials: true }).then(res => {
+        this.img = files[0].name
+        this.edit()
+      }).catch(error => {
+        console.log(error)
+      })
     },
     createImage (file) {
       const reader = new FileReader()
@@ -133,8 +144,8 @@ export default {
         this.userid = res.data.userid
         this.ename = this.name = res.data.name
         this.eprofile = this.profile = res.data.profile
-        if (res.data.img !== '') this.eimg = this.img = res.data.img
-        console.log(res.data.name)
+        if (res.data.img !== '') this.img = res.data.img
+        this.eimg = this.imgUrl = this.url + this.img
       }).catch(err => {
         console.log(err)
       })
@@ -144,6 +155,7 @@ export default {
       params.append('name', this.ename)
       if (!this.eprofile || !this.eprofile.match(/\S/g)) this.eprofile = ''
       params.append('profile', this.eprofile)
+      params.append('img', this.img)
       axios.post(process.env.VUE_APP_API_URL_BASE + 'user/edit', params, { withCredentials: true }).then(res => {
         this.$router.go()
       }).catch(error => {
