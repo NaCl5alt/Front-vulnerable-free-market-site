@@ -1,9 +1,9 @@
 <template>
   <div>
     <h2>新着商品一覧</h2>
-    <div v-for="item in items" :key="item.id" class="row item">
-        <img :src="process.env.VUE_APP_API_URL_BASE + item.img" alt="商品画像" class="col-2 img-thumbnail">
-        <!--img src="https://i.pinimg.com/originals/11/ba/c9/11bac9268cb294df434cfc3ff12e5780.jpg" class="col-2 img-thumbnail" -->
+    <div v-for="item in items" :key="item.id" class="row item" v-on:click="GoItem(item.id)">
+        <img :src="ItemImgUrl + item.img" alt="商品画像" class="col-2 img-thumbnail">
+        <!--img src="https://i.pinimg.com/originals/11/ba/c9/11bac9268cb294df434cfc3ff12e5780.jpg" class="col-2 img-thumbnail"-->
         <div class="col-8">
           <div class="col">
             <div class="row">
@@ -37,7 +37,9 @@ export default {
       itemData: [],
       endTime: '',
       end: 0,
-      max: 0
+      max: 0,
+      ItemUrl: 'item/',
+      ItemImgUrl: 'http://192.168.1.3:8080/freemarket/img/item/'
     }
   },
   filters: {
@@ -95,6 +97,10 @@ export default {
         // this.end = this.max + 1
         console.log(this.items)
       }
+    },
+    GoItem (id) {
+      const path = this.ItemUrl + id
+      this.$router.push({ path: path })
     }
   },
   beforeMount () {
@@ -104,12 +110,26 @@ export default {
 </script>
 
 <style scoped>
+h2 {
+  margin-bottom: 15px;
+}
 img {
   width: 200px;
   height: 200px;
   object-fit: cover;
 }
 .item {
-  margin-left: 15px
+  border: 5px solid antiquewhite;
+  border-radius: 5px;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  padding: 15px;
+  cursor: pointer;
+}
+.item:hover {
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+  transform: translateY(-10px);
+  transition-duration: 0.5s;
 }
 </style>
