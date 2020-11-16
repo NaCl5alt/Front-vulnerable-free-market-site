@@ -10,6 +10,7 @@ import ChangeID from '../components/ChangeID.vue'
 import ChangePasswd from '../components/ChangePasswd.vue'
 import DeleteUser from '../components/DeleteUser.vue'
 import Item from '../components/Item.vue'
+import Buy from '../components/Buy.vue'
 import axios from 'axios'
 
 Vue.use(VueRouter)
@@ -22,9 +23,10 @@ const routes = [
   { path: '/change/id', component: ChangeID, name: 'ユーザID変更', meta: { requiresAuth: true } },
   { path: '/change/passwd', component: ChangePasswd, name: 'パスワード変更', meta: { requiresAuth: true } },
   { path: '/login', component: Login, name: 'ログイン' },
-  { path: '/logout', component: Logout, name: 'ログアウト' },
-  { path: '/exhibit', component: Exhibit, name: '出品' },
-  { path: '/item/:id', component: Item, name: 'item', meta: { requiresAuth: true } }
+  { path: '/logout', component: Logout, name: 'ログアウト', meta: { requiresAuth: true } },
+  { path: '/exhibit', component: Exhibit, name: '出品', meta: { requiresAuth: true } },
+  { path: '/item/:id', component: Item, name: 'item', meta: { requiresAuth: true } },
+  { path: '/buy', component: Buy, name: 'buy', meta: { requiresAuth: true } }
 ]
 
 const router = new VueRouter({

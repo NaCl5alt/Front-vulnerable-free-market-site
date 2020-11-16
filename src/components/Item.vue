@@ -54,7 +54,7 @@ export default {
       axios.post(`${process.env.VUE_APP_API_URL_BASE}solditem`, {
         id: this.$route.params.id
       }, { withCredentials: true }).then(res => {
-        this.$router.push({ path: '/' })
+        this.$router.push({ path: '/buy' })
         this.$router.go()
       }).catch(err => {
         console.log(err)
