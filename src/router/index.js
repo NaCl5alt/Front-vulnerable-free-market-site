@@ -24,7 +24,7 @@ const routes = [
   { path: '/login', component: Login, name: 'ログイン' },
   { path: '/logout', component: Logout, name: 'ログアウト' },
   { path: '/exhibit', component: Exhibit, name: '出品' },
-  { path: '/item/:id', componet: Item, name: 'item', meta: { requiresAuth: true } }
+  { path: '/item/:id', component: Item, name: 'item', meta: { requiresAuth: true } }
 ]
 
 const router = new VueRouter({
