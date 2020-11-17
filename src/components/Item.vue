@@ -17,7 +17,7 @@
         </table>
       </div>
       <b-button style="width: 100%;margin-top: 5%;margin-bottom: 5%;" v-on:click="buy">購入</b-button>
-      {{ explanation }}
+      <div v-html="explanation"></div>
     </div>
     <div class="col"></div>
   </div>
