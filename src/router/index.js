@@ -6,6 +6,9 @@ import Regist from '../components/Regist.vue'
 import Login from '../components/Login.vue'
 import Logout from '../components/Logout.vue'
 import Exhibit from '../components/Exhibit.vue'
+import ExhibitList from '../components/ExhibitList.vue'
+import SoldList from '../components/SoldList.vue'
+import PurChasedList from '../components/PurChasedList.vue'
 import ChangeID from '../components/ChangeID.vue'
 import ChangePasswd from '../components/ChangePasswd.vue'
 import DeleteUser from '../components/DeleteUser.vue'
@@ -19,6 +22,9 @@ const routes = [
   { path: '/', component: Home, name: 'Home' },
   { path: '/regist', component: Regist, name: 'ユーザ登録' },
   { path: '/mypage', component: MyPage, name: 'マイページ', meta: { requiresAuth: true } },
+  { path: '/mypage/exhibit', component: ExhibitList, name: 'ExhibitList', meta: { requiresAuth: true } },
+  { path: '/mypage/sold', component: SoldList, name: 'SoldList', meta: { requiresAuth: true } },
+  { path: '/mypage/purchased', component: PurChasedList, name: 'PurchasedList', meta: { requiresAuth: true } },
   { path: '/mypage/delete', component: DeleteUser, name: 'ユーザ削除', meta: { requiresAuth: true } },
   { path: '/change/id', component: ChangeID, name: 'ユーザID変更', meta: { requiresAuth: true } },
   { path: '/change/passwd', component: ChangePasswd, name: 'パスワード変更', meta: { requiresAuth: true } },

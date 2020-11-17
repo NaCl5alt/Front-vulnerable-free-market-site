@@ -82,5 +82,6 @@ img {
   max-height: 250px;
   max-width: 250px;
   margin-right: 5%;
+  margin-left: 5%;
 }
 </style>
