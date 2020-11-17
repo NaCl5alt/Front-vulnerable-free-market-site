@@ -14,9 +14,8 @@
         <td>{{ item.name }}</td>
         <td>{{ item.price }}</td>
         <td>{{ item.updatedAt | moment }}</td>
-        <td style="display: flex">
-          <b-button style="margin-right: 10px">編集</b-button>
-          <b-button>削除</b-button>
+        <td>
+          <div class="text-center"><b-button v-on:click="cancel(item.id)">出品取り消し</b-button></div>
         </td>
       </tr>
     </table>
@@ -42,6 +41,13 @@ export default {
     getItems () {
       axios.get(`${process.env.VUE_APP_API_URL_BASE}item`, { withCredentials: true }).then(res => {
         this.items = res.data
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    cancel (id) {
+      axios.delete(`${process.env.VUE_APP_API_URL_BASE}item/${id}`, { withCredentials: true }).then(res => {
+        this.$router.go()
       }).catch(err => {
         console.log(err)
       })
