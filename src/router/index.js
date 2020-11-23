@@ -14,6 +14,7 @@ import ChangePasswd from '../components/ChangePasswd.vue'
 import DeleteUser from '../components/DeleteUser.vue'
 import Item from '../components/Item.vue'
 import Buy from '../components/Buy.vue'
+import Search from '../components/Search.vue'
 import axios from 'axios'
 
 Vue.use(VueRouter)
@@ -32,7 +33,8 @@ const routes = [
   { path: '/logout', component: Logout, name: 'ログアウト', meta: { requiresAuth: true } },
   { path: '/exhibit', component: Exhibit, name: '出品', meta: { requiresAuth: true } },
   { path: '/item/:id', component: Item, name: 'item', meta: { requiresAuth: true } },
-  { path: '/buy', component: Buy, name: 'buy', meta: { requiresAuth: true } }
+  { path: '/buy', component: Buy, name: 'buy', meta: { requiresAuth: true } },
+  { path: '/search', component: Search, name: 'Search' }
 ]
 
 const router = new VueRouter({
