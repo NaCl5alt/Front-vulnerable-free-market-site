@@ -35,7 +35,7 @@ export default {
       name: '',
       explanation: '',
       price: 0,
-      img: 'https://pbs.twimg.com/profile_images/1238034989108711424/gQ1_2iGb_400x400.jpg',
+      img: '../asserts/sailpanda1.png',
       imgchange: false,
       imgname: 'default',
       eimg: ''
@@ -60,7 +60,10 @@ export default {
       if (this.imgchange) {
         var params = new FormData()
         params.append('img', this.eimg)
-        axios.post(process.env.VUE_APP_API_URL_BASE + 'img/item', params, { withCredentials: true }).then().catch(error => {
+        axios.post(process.env.VUE_APP_API_URL_BASE + 'img/item', params, { withCredentials: true }).then(res => {
+          console.log(res.data)
+        }
+        ).catch(error => {
           console.log(error)
         })
       }
