@@ -43,10 +43,10 @@ export default {
     search () {
       this.$router.push({
         name: 'Search',
-        params: {
+        query: {
           keyword: encodeURIComponent(this.keyword)
         }
-      }).catch(() => {})
+      })
     },
     verifyfunc () {
       this.$nextTick(() => {

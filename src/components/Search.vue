@@ -36,8 +36,8 @@ export default {
   },
   methods: {
     get () {
-      if (this.$route.params.keyword) {
-        this.keyword = decodeURIComponent(this.$route.params.keyword)
+      if (this.$route.query.keyword) {
+        this.keyword = decodeURIComponent(this.$route.query.keyword)
         console.log(this.keyword)
         axios.get(process.env.VUE_APP_API_URL_BASE + 'search?keyword=' + this.keyword).then(res => {
           this.items = res.data
