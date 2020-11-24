@@ -35,7 +35,7 @@ export default {
       name: '',
       explanation: '',
       price: 0,
-      img: '../asserts/sailpanda1.png',
+      img: '../asserts/sailpanda1.jpg',
       imgchange: false,
       imgname: 'default',
       eimg: ''
