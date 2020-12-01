@@ -142,7 +142,8 @@ export default {
         this.userid = res.data.userid
         this.ename = this.name = res.data.name
         this.eprofile = this.profile = res.data.profile
-        this.eimg = this.imgUrl = this.url + this.img
+        if (res.data.img === '') this.eimg = this.imgUrl = this.url + this.img
+        else this.eimg = this.imgUrl = this.url + res.data.img
       }).catch(err => {
         console.log(err)
       })
@@ -161,6 +162,7 @@ export default {
     }
   },
   beforeMount () {
+    this.eimg = this.imgUrl = this.url + this.img
     this.getProfile()
   }
 }
