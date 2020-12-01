@@ -56,7 +56,7 @@ export default {
       this.imgname = file.name
       this.eimg = file
     },
-    async exhibit () {
+    async upimg () {
       if (this.imgchange) {
         var params = new FormData()
         params.append('img', this.eimg)
@@ -68,6 +68,9 @@ export default {
           console.log(error)
         })
       }
+    },
+    async exhibit () {
+      await this.upimg()
       await axios.post(process.env.VUE_APP_API_URL_BASE + 'item', {
         name: this.name,
         explanation: this.explanation,
