@@ -35,9 +35,9 @@ export default {
       name: '',
       explanation: '',
       price: 0,
-      img: '../asserts/sailpanda1.jpg',
+      img: 'http://192.168.1.3:8080/freemarket/img/item/00000000-0000-0000-0000-000000000000',
       imgchange: false,
-      imgname: 'default',
+      imgname: '00000000-0000-0000-0000-000000000000',
       eimg: ''
     }
   },
