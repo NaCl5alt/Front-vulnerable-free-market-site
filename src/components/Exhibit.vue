@@ -56,11 +56,11 @@ export default {
       this.imgname = file.name
       this.eimg = file
     },
-    exhibit () {
+    async exhibit () {
       if (this.imgchange) {
         var params = new FormData()
         params.append('img', this.eimg)
-        axios.post(process.env.VUE_APP_API_URL_BASE + 'img/item', params, { withCredentials: true }).then(res => {
+        await axios.post(process.env.VUE_APP_API_URL_BASE + 'img/item', params, { withCredentials: true }).then(res => {
           console.log(res.data)
           this.imgname = res.data
         }
@@ -68,7 +68,7 @@ export default {
           console.log(error)
         })
       }
-      axios.post(process.env.VUE_APP_API_URL_BASE + 'item', {
+      await axios.post(process.env.VUE_APP_API_URL_BASE + 'item', {
         name: this.name,
         explanation: this.explanation,
         price: parseInt(this.price, 10),
