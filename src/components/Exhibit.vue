@@ -62,6 +62,7 @@ export default {
         params.append('img', this.eimg)
         axios.post(process.env.VUE_APP_API_URL_BASE + 'img/item', params, { withCredentials: true }).then(res => {
           console.log(res.data)
+          this.imgname = res.data
         }
         ).catch(error => {
           console.log(error)

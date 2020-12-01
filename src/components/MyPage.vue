@@ -98,7 +98,7 @@ export default {
       userid: 'test',
       name: 'test',
       profile: 'test profile',
-      img: 'https://pbs.twimg.com/profile_images/1238034989108711424/gQ1_2iGb_400x400.jpg',
+      img: '00000000-0000-0000-0000-000000000000',
       ename: '',
       eprofile: '',
       eimg: ''
@@ -111,7 +111,8 @@ export default {
       var params = new FormData()
       params.append('img', files[0])
       axios.post(process.env.VUE_APP_API_URL_BASE + 'img/user', params, { withCredentials: true }).then(res => {
-        this.img = files[0].name
+        // this.img = files[0].name
+        this.img = res.data
         this.edit()
       }).catch(error => {
         console.log(error)
@@ -141,7 +142,6 @@ export default {
         this.userid = res.data.userid
         this.ename = this.name = res.data.name
         this.eprofile = this.profile = res.data.profile
-        if (res.data.img !== '') this.img = res.data.img
         this.eimg = this.imgUrl = this.url + this.img
       }).catch(err => {
         console.log(err)
