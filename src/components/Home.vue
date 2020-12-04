@@ -19,7 +19,9 @@
       </div>
     </div>
     <infinite-loading @infinite="infiniteHandler" spinner="spiral">
-      <div slot="spinner">ロード中...</div>
+      <div slot="spinner">
+        <b-icon icon="arrow-counterclockwise" animation="spin-reverse" font-scale="4"></b-icon>ロード中...
+      </div>
       <div slot="no-more">もう検索データがないよ</div>
       <div slot="no-results">検索結果がない</div>
     </infinite-loading>
@@ -34,7 +36,6 @@ export default {
   data () {
     return {
       items: [],
-      itemData: [],
       endTime: '',
       end: 0,
       max: 0,
@@ -62,7 +63,6 @@ export default {
         withCredentials: true
       }).then(res => {
         this.max = res.data
-        console.log(this.max)
       }).catch(err => {
         console.log(err)
       })
@@ -73,11 +73,10 @@ export default {
       }).then(res => {
         this.items.push(res.data)
         this.endTime = res.data.createdAt
-        this.end = this.items.length
-        console.log(this.items)
       }).catch(err => {
         console.log(err)
       })
+      this.end = this.items.length
     },
     async getItems () {
       if (this.endTime) {
@@ -85,17 +84,12 @@ export default {
           withCredentials: true
         }, {
         }).then(res => {
-          // console.log(res.data)
           if (res.data.length !== 0) {
-            // console.log(this.items)
-            // console.log(res.data)
             this.items = this.items.concat(res.data)
             this.endTime = res.data[res.data.length - 1].createdAt
-            this.end = this.items.length
           }
         })
-        // this.end = this.max + 1
-        console.log(this.items)
+        this.end = this.items.length
       }
     },
     GoItem (id) {
@@ -103,8 +97,8 @@ export default {
       this.$router.push({ path: path })
     }
   },
-  beforeMount () {
-    this.getCount()
+  async beforeMount () {
+    await this.getCount()
   }
 }
 </script>

@@ -98,7 +98,7 @@ export default {
       userid: 'test',
       name: 'test',
       profile: 'test profile',
-      img: '00000000-0000-0000-0000-000000000000',
+      img: '00000000-0000-0000-0000-000000000000.jpeg',
       ename: '',
       eprofile: '',
       eimg: ''
