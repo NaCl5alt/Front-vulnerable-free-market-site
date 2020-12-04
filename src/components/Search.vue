@@ -39,7 +39,7 @@ export default {
       if (this.$route.query.keyword) {
         this.keyword = decodeURIComponent(this.$route.query.keyword)
         console.log(this.keyword)
-        axios.get(process.env.VUE_APP_API_URL_BASE + 'search?keyword=' + this.keyword).then(res => {
+        axios.get(`/freemarket/search?keyword=${this.keyword}`).then(res => {
           this.items = res.data
           console.log(this.items)
         }).catch(err => {

@@ -45,7 +45,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    axios.post(process.env.VUE_APP_API_URL_BASE + 'token', {}, { withCredentials: true }).then(res => {
+    axios.post('/freemarket/token', {}, { withCredentials: true }).then(res => {
       // if (res.data.token) this.$cookies.set('token', res.data.token)
       next()
     }).catch(() => {

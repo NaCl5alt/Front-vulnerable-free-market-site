@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     showItem () {
-      axios.get(`${process.env.VUE_APP_API_URL_BASE}item/${this.$route.params.id}`, { withCredentials: true }).then(res => {
+      axios.get(`/freemarket/item/${this.$route.params.id}`, { withCredentials: true }).then(res => {
         console.log(res.data)
         this.name = res.data.name
         this.explanation = res.data.explanation
@@ -51,7 +51,7 @@ export default {
       })
     },
     buy () {
-      axios.post(`${process.env.VUE_APP_API_URL_BASE}solditem`, {
+      axios.post('/freemarket/solditem', {
         id: this.$route.params.id
       }, { withCredentials: true }).then(res => {
         document.location = '/buy'

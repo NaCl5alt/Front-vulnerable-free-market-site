@@ -39,14 +39,14 @@ export default {
   },
   methods: {
     getItems () {
-      axios.get(`${process.env.VUE_APP_API_URL_BASE}item`, { withCredentials: true }).then(res => {
+      axios.get('/freemarket/item', { withCredentials: true }).then(res => {
         this.items = res.data
       }).catch(err => {
         console.log(err)
       })
     },
     cancel (id) {
-      axios.delete(`${process.env.VUE_APP_API_URL_BASE}item/${id}`, { withCredentials: true }).then(res => {
+      axios.delete(`/freemarket/item/${id}`, { withCredentials: true }).then(res => {
         this.$router.go()
       }).catch(err => {
         console.log(err)

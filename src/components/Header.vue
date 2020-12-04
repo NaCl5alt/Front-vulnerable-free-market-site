@@ -50,7 +50,7 @@ export default {
     },
     verifyfunc () {
       this.$nextTick(() => {
-        axios.post(process.env.VUE_APP_API_URL_BASE + 'token', {}, { withCredentials: true }).then(res => {
+        axios.post('/freemarket/token', {}, { withCredentials: true }).then(res => {
           console.log('status: ' + res.status)
           if (res.status === 200) {
             this.verify = true

@@ -110,7 +110,7 @@ export default {
       this.createImage(files[0])
       var params = new FormData()
       params.append('img', files[0])
-      axios.post(process.env.VUE_APP_API_URL_BASE + 'img/user', params, { withCredentials: true }).then(res => {
+      axios.post('/freemarket/img/user', params, { withCredentials: true }).then(res => {
         // this.img = files[0].name
         this.img = res.data
         this.edit()
@@ -136,7 +136,7 @@ export default {
       event.stopPropagation()
     },
     async getProfile () {
-      await axios.get(process.env.VUE_APP_API_URL_BASE + 'user', {
+      await axios.get('/freemarket/user', {
         withCredentials: true
       }).then(res => {
         this.userid = res.data.userid
@@ -154,7 +154,7 @@ export default {
       if (!this.eprofile || !this.eprofile.match(/\S/g)) this.eprofile = ''
       params.append('profile', this.eprofile)
       params.append('img', this.img)
-      axios.post(process.env.VUE_APP_API_URL_BASE + 'user/edit', params, { withCredentials: true }).then(res => {
+      axios.post('/freemarket/user/edit', params, { withCredentials: true }).then(res => {
         this.$router.go()
       }).catch(error => {
         console.log(error)

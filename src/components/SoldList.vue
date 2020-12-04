@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     getItems () {
-      axios.get(`${process.env.VUE_APP_API_URL_BASE}solditem/exhibitor`, { withCredentials: true }).then(res => {
+      axios.get('/freemarket/solditem/exhibitor', { withCredentials: true }).then(res => {
         this.items = res.data
       }).catch(err => {
         console.log(err)

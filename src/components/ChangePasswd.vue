@@ -20,7 +20,7 @@ export default {
     regist () {
       var params = new URLSearchParams()
       params.append('passwd', this.passwd)
-      axios.post(process.env.VUE_APP_API_URL_BASE + 'user/passwd', params, { withCredentials: true }).then(res => {
+      axios.post('/freemarket/user/passwd', params, { withCredentials: true }).then(res => {
         this.$router.push({ path: '/' })
         console.log(res)
       }).catch(error => {

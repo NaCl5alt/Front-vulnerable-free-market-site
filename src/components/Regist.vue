@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     regist () {
-      axios.post(process.env.VUE_APP_API_URL_BASE + 'user', {
+      axios.post('/freemarket/user', {
         userid: this.userid,
         name: this.name,
         pass: this.pass

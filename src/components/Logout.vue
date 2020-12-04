@@ -7,7 +7,7 @@ import axios from 'axios'
 export default {
   methods: {
     logout () {
-      axios.post(process.env.VUE_APP_API_URL_BASE + 'logout', { withCredentials: true }).then(res => {
+      axios.post('/freemarket/logout', { withCredentials: true }).then(res => {
         this.$cookies.remove('token')
         console.log(res)
         this.$router.push({ name: 'Home' })

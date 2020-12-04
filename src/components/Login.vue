@@ -23,7 +23,7 @@ export default {
       var params = new URLSearchParams()
       params.append('userid', this.userid)
       params.append('pass', this.pass)
-      await axios.post(process.env.VUE_APP_API_URL_BASE + 'login', params, { withCredentials: true }).then(res => {
+      await axios.post('/freemarket/login', params, { withCredentials: true }).then(res => {
         if (res.status === 200) {
           const token = res.data.token
           this.$cookies.set('token', token)

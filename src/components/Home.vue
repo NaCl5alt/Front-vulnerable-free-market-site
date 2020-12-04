@@ -58,7 +58,7 @@ export default {
       }
     },
     async getCount () {
-      await axios.get(process.env.VUE_APP_API_URL_BASE + 'item/count', {
+      await axios.get('/freemarket/item/count', {
         withCredentials: true
       }).then(res => {
         this.max = res.data
@@ -68,7 +68,7 @@ export default {
       })
     },
     async firstItem () {
-      await axios.get(process.env.VUE_APP_API_URL_BASE + 'item/first', {
+      await axios.get('/freemarket/item/first', {
         withCredentials: true
       }).then(res => {
         this.items.push(res.data)
@@ -81,7 +81,7 @@ export default {
     },
     async getItems () {
       if (this.endTime) {
-        await axios.get(process.env.VUE_APP_API_URL_BASE + 'item/paging/?time=' + this.endTime, {
+        await axios.get(`/freemarket/item/paging/?time=${this.endTime}`, {
           withCredentials: true
         }, {
         }).then(res => {
